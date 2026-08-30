@@ -18,8 +18,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# app.secret_key = "pankaj_portfolio_secret_2026"
-
 app.secret_key = os.getenv("SECRET_KEY")
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
@@ -2723,4 +2721,4 @@ if __name__ == "__main__":
 
     with app.app_context():
         db.create_all()
-    app.run(debug=False) 
+    app.run(debug=False)
