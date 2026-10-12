@@ -110,8 +110,8 @@ app.config["EXPERIENCE_FOLDER"] = os.path.join(
     "static",
     "experiences"
 )
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
