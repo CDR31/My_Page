@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, request, session, redirect,send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from sqlalchemy import func
+from sqlalchemy import func, inspect
 from datetime import datetime,timedelta,UTC
 import os
 import secrets
@@ -2720,13 +2720,23 @@ def admin_login_history():
         history=history
     )
 
-# if __name__ == "__main__": 
-#     with app.app_context():
-#         db.create_all()
-#     app.run(debug=False)
-
+# Initialize database and verify tables
 with app.app_context():
     db.create_all()
+
+    print("DATABASE INITIALIZATION COMPLETED")
+    print("DATABASE LOCATION:", db.engine.url.database)
+
+    inspector = inspect(db.engine)
+    tables = inspector.get_table_names()
+
+    print("DATABASE TABLES:", tables)
+
+    if "user" in tables:
+        print("SUCCESS: User table exists.")
+    else:
+        print("ERROR: User table is missing.")
+
 
 if __name__ == "__main__":
     app.run(debug=False)
