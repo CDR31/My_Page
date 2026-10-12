@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func, inspect
 from datetime import datetime,timedelta,UTC
-import os
+
 import secrets
 import random
 from flask_mail import Mail, Message
@@ -28,7 +28,26 @@ app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 
 mail = Mail(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# db = SQLAlchemy(app)
+# migrate = Migrate(app, db)
+
+# Database configuration
+import os
+
+os.makedirs(app.instance_path, exist_ok=True)
+
+database_path = os.path.join(
+    app.instance_path,
+    "portfolio.db"
+)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    "sqlite:///" + database_path.replace("\\", "/")
+)
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
