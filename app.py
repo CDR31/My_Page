@@ -1998,7 +1998,11 @@ def my_feedback():
         feedbacks=feedbacks
     )
 
-redirect_uri = "http://127.0.0.1:5000/google_callback"
+redirect_uri = os.environ.get(
+    "GOOGLE_REDIRECT_URI",
+    "http://127.0.0.1:5000/google_callback"
+)
+# redirect_uri = "http://127.0.0.1:5000/google_callback"
 @app.route("/google_callback")
 def google_callback():
 
