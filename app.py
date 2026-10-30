@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import func, inspect
 from datetime import datetime,timedelta,UTC
-
+from flask import Response
 import secrets
 import random
 from flask_mail import Mail, Message
@@ -488,6 +488,23 @@ def upload_resume():
 @app.route("/")
 def home():
     return render_template("home.html")
+
+@app.route("/sitemap.xml")
+def sitemap():
+
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+        <url>
+            <loc>https://pankaj-rajpoot.onrender.com/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+
+    </urlset>
+    """
+
+    return Response(xml, mimetype="application/xml")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
