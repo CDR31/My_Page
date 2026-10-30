@@ -1,28 +1,57 @@
-<a href="/dashboard" class="btn page-top-btn">
-    🏠 Dashboard
-</a>
+<!DOCTYPE html>
+<html lang="en">
 
-<br><br>
-<h1>My Feedback</h1>
+<head>
 
-{% for feedback in feedbacks %}
+    <meta charset="UTF-8">
 
-<div class="project-card">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <h3>📝 Your Feedback</h3>
+    <title>My Feedback - Student Service Portal</title>
 
-    <p>
-        {{ feedback.message }}
-    </p>
+    <!-- Student Service Portal Favicon -->
+    <link rel="icon"
+          type="image/png"
+          href="{{ url_for('static', filename='images/favicon.png') }}?v=5">
 
-    <hr>
+    <!-- Your CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 
-    <h3>💬 Admin Reply</h3>
+</head>
 
-    <p>
-        {{ feedback.reply if feedback.reply else "No reply yet" }}
-    </p>
+<body>
 
-</div>
+    <a href="/dashboard" class="btn page-top-btn">
+        🏠 Dashboard
+    </a>
 
-{% endfor %}
+    <br><br>
+
+    <h1>My Feedback</h1>
+
+    {% for feedback in feedbacks %}
+
+    <div class="project-card">
+
+        <h3>📝 Your Feedback</h3>
+
+        <p>
+            {{ feedback.message }}
+        </p>
+
+        <hr>
+
+        <h3>💬 Admin Reply</h3>
+
+        <p>
+            {{ feedback.reply if feedback.reply else "No reply yet" }}
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</body>
+</html>

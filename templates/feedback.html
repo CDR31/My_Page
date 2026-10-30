@@ -1,42 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Feedback - Student Service Portal</title>
+
+<!-- Student Service Portal Favicon -->
+<link rel="icon"
+      type="image/png"
+      sizes="64x64"
+      href="{{ url_for('static', filename='images/favicon.png') }}?v=6">
+
+<!-- Custom CSS -->
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
 <a href="/dashboard" class="btn page-top-btn">
-🏠 Dashboard
+    🏠 Dashboard
 </a>
 
 <hr>
 
 <div class="form-container">
 
-```
-<div class="form-card">
+    <div class="form-card">
 
-    <h1>📝 Feedback</h1>
+        <h1>📝 Feedback</h1>
 
-    <p class="subtitle">
+        <p class="subtitle">
+            Share your suggestions, issues, or ideas to improve the platform.
+        </p>
 
-        Share your suggestions, issues, or ideas to improve the platform.
+        <form method="POST">
 
-    </p>
+            <textarea
+                name="message"
+                placeholder="Write your feedback here..."
+                rows="6"
+                required>
+            </textarea>
 
-    <form method="POST">
+            <br><br>
 
-        <textarea
-        name="message"
-        placeholder="Write your feedback here..."
-        rows="6"
-        required>
-        </textarea>
+            <button type="submit">
+                Send Feedback
+            </button>
 
-        <br><br>
+        </form>
 
-        <button type="submit">
-
-            Send Feedback
-
-        </button>
-
-    </form>
+    </div>
 
 </div>
-```
 
-</div>
+</body>
+</html>
